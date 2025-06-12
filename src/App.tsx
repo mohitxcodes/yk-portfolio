@@ -1,9 +1,13 @@
+import Header from "./components/header/Header"
 import HeroSection from "./pages/landing/sections/HeroSection"
 
 function App() {
 
   return (
-    <HeroSection />
+    <>
+      <Header />
+      <HeroSection />
+    </>
   )
 }
 
