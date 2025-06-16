@@ -23,17 +23,6 @@ function Footer() {
                         © {currentYear} Yashwant Kumar
                     </div>
 
-                    {/* Made with love */}
-                    <div className="text-gray-400 flex items-center gap-1">
-                        Made with
-                        <motion.span
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 1, repeat: Infinity }}
-                            className="text-red-500"
-                        >
-                            <FaHeart />
-                        </motion.span>
-                    </div>
 
                     {/* Social Links */}
                     <div className="flex items-center space-x-4">

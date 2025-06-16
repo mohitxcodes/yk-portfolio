@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 function HeroSection() {
     const [ref, inView] = useInView({
-        triggerOnce: true,
+        triggerOnce: false,
         threshold: 0.1,
     });
 
@@ -68,6 +68,14 @@ function HeroSection() {
             color: "from-amber-500 to-orange-500",
             stats: "1000+ Students",
             achievements: ["Teaching Excellence", "Mentorship Program"]
+        },
+        {
+            title: "AI Development",
+            description: "Building next-generation AI solutions for real-world problems",
+            icon: <FaBrain />,
+            color: "from-blue-500 to-indigo-500",
+            stats: "10+ AI Projects",
+            achievements: ["AI Innovation Award", "Tech Leadership"]
         }
     ];
 
@@ -193,13 +201,13 @@ function HeroSection() {
                     <motion.div
                         ref={ref}
                         initial={{ opacity: 0, x: -50 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                         transition={{ duration: 0.8 }}
                         className="text-left max-w-2xl"
                     >
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
+                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                             transition={{ delay: 0.2 }}
                             className="space-y-10"
                         >
@@ -207,7 +215,7 @@ function HeroSection() {
                             <div className="space-y-8">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
+                                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                     transition={{ delay: 0.3 }}
                                     className="space-y-4"
                                 >
@@ -315,7 +323,7 @@ function HeroSection() {
                                 {/* Quick Links */}
                                 <motion.div
                                     initial={{ opacity: 0 }}
-                                    animate={inView ? { opacity: 1 } : {}}
+                                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
                                     transition={{ delay: 1.0 }}
                                     className="flex flex-wrap gap-4"
                                 >
@@ -339,7 +347,7 @@ function HeroSection() {
                                 {/* Social Links */}
                                 <motion.div
                                     initial={{ opacity: 0 }}
-                                    animate={inView ? { opacity: 1 } : {}}
+                                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
                                     transition={{ delay: 1.1 }}
                                     className="flex gap-6"
                                 >
@@ -362,16 +370,15 @@ function HeroSection() {
                     {/* Right side - New Dynamic Layout */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                         transition={{ duration: 0.8 }}
                         className="relative"
                     >
                         <div className="my-10 space-y-8 flex flex-col justify-center">
-
                             {/* Interactive Timeline */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                 transition={{ delay: 0.4 }}
                                 className="relative"
                             >
@@ -381,7 +388,7 @@ function HeroSection() {
                                         <motion.div
                                             key={highlight.title}
                                             initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
+                                            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                                             transition={{ delay: 0.5 + index * 0.1 }}
                                             className="relative pl-8 border-l-2 border-gray-800"
                                         >
@@ -391,29 +398,6 @@ function HeroSection() {
                                             <div className="text-sm text-gray-500">{highlight.description}</div>
                                         </motion.div>
                                     ))}
-                                </div>
-                            </motion.div>
-
-                            {/* Call to Action */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                className="relative p-6 rounded-lg bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-gray-800"
-                            >
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">Let's Connect</h3>
-                                        <p className="text-gray-300">Interested in collaboration or learning more?</p>
-                                    </div>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={() => setShowContact(true)}
-                                        className="px-6 py-2 rounded-lg bg-white text-black hover:bg-gray-100 transition-all duration-300"
-                                    >
-                                        Get in Touch
-                                    </motion.button>
                                 </div>
                             </motion.div>
                         </div>

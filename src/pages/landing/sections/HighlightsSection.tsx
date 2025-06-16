@@ -134,7 +134,7 @@ function HighlightsSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         className="space-y-6"
                     >
                         <div className="relative inline-block">
@@ -146,7 +146,7 @@ function HighlightsSection() {
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: false }}
                             />
                         </div>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
@@ -166,6 +166,10 @@ function HighlightsSection() {
                             }}
                         >
                             <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: false }}
+                                transition={{ duration: 0.5 }}
                                 className="bg-gray-900/30 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden h-full aspect-square group"
                                 whileHover={{
                                     scale: 1.02,
