@@ -200,11 +200,6 @@ function Experience() {
                                                     {exp.period}
                                                 </motion.span>
 
-                                                <div className="flex items-center gap-2">
-                                                    <FaStar className="text-yellow-500" />
-                                                    <span className="text-xs text-gray-400">{exp.impact} Impact</span>
-                                                </div>
-
                                                 <motion.div
                                                     className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-800/50 text-xs text-gray-300 border border-gray-700"
                                                     whileHover={{ scale: 1.05 }}
@@ -216,8 +211,8 @@ function Experience() {
                                         </div>
 
                                         {/* Bottom Section */}
-                                        <div className="mt-6 pt-6 border-t border-gray-800">
-                                            <div className="grid grid-cols-2 gap-4">
+                                        <div className=" border-t border-gray-800">
+                                            {/* <div className="grid grid-cols-2 gap-4">
                                                 <div className="space-y-2">
                                                     {exp.highlights.map((highlight, i) => (
                                                         <motion.div
@@ -242,7 +237,7 @@ function Experience() {
                                                         </motion.div>
                                                     ))}
                                                 </div>
-                                            </div>
+                                            </div> */}
 
                                             <motion.a
                                                 href={exp.link}
