@@ -6,6 +6,7 @@ import App from './App.tsx'
 import AboutMe from './pages/about-me/AboutMe.tsx'
 import LandingPage from './pages/landing/LandingPage.tsx'
 import ContactPage from './pages/contact/ContactPage.tsx'
+import HighLightPage from './pages/highligths/HighLightPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,9 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactPage />
+      }, {
+        path: '/highlights',
+        element: <HighLightPage />
       }
     ],
   },
