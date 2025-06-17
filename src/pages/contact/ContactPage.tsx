@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPaperPlane, FaClock, FaCheck, FaCalendarAlt, FaGlobe } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPaperPlane, FaCheck, FaCalendarAlt, FaGlobe } from 'react-icons/fa';
 import { useState } from 'react';
 
 function ContactPage() {
@@ -11,7 +11,6 @@ function ContactPage() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
-    const [activeTab, setActiveTab] = useState('contact');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -121,7 +120,7 @@ function ContactPage() {
                         transition={{ duration: 0.5 }}
                         className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
                     >
-                        {quickActions.map((action, index) => (
+                        {quickActions.map((action) => (
                             <motion.a
                                 key={action.label}
                                 href={action.link}

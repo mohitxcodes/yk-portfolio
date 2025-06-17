@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaBook, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -43,7 +43,7 @@ function Header() {
                 <div className="flex items-center justify-end h-14">
                     {/* Navigation */}
                     <nav className="hidden md:flex items-center space-x-1">
-                        {navItems.map((item, index) => (
+                        {navItems.map((item) => (
                             <Link
                                 key={item.label}
                                 to={item.href}

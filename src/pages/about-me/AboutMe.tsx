@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaCode, FaGraduationCap, FaGithub, FaLinkedin, FaTwitter, FaDownload, FaGlobe, FaArrowRight, FaAward, FaBook, FaRocket, FaCalendarAlt, FaMapMarkerAlt, FaEnvelope, FaPython, FaReact, FaAws, FaDocker, FaDatabase, FaInstagram } from 'react-icons/fa';
+import { FaCode, FaGraduationCap, FaGithub, FaLinkedin, FaTwitter, FaDownload, FaGlobe, FaArrowRight, FaAward, FaBook, FaRocket, FaCalendarAlt, FaEnvelope, FaPython, FaReact, FaAws, FaDocker, FaDatabase, FaInstagram } from 'react-icons/fa';
 import { SiGo, SiTypescript, SiKubernetes, SiTerraform, SiApachekafka, SiGraphql, SiPostgresql, SiRedis, SiArangodb } from 'react-icons/si';
 
 function AboutMe() {

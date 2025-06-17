@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaRocket, FaGraduationCap, FaPlane, FaFlask, FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaAward, FaBook, FaGlobe, FaChartLine, FaLightbulb, FaCode, FaUniversity } from 'react-icons/fa';
+import { FaPlane, FaFlask, FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaBook, FaGlobe, FaChartLine, } from 'react-icons/fa';
 import { useState } from 'react';
 
 function HighLightPage() {
@@ -20,12 +20,6 @@ function HighLightPage() {
         { label: 'Workshops', value: '20+', icon: <FaUsers /> },
         { label: 'Travels', value: '10+', icon: <FaPlane /> },
         { label: 'Events', value: '25+', icon: <FaCalendarAlt /> }
-    ];
-
-    const achievements = [
-        { icon: <FaAward />, text: 'Research Excellence Award 2023' },
-        { icon: <FaLightbulb />, text: 'Innovation Grant Recipient' },
-        { icon: <FaUniversity />, text: 'Guest Speaker at MIT' }
     ];
 
     const highlights = [
