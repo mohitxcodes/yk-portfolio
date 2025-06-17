@@ -15,8 +15,6 @@ function HighlightsSection() {
     // Hook2: Measure the width of the container element
     const [ref, { width }] = useMeasure();
 
-
-
     // Hook3: Hold items
     const [items, set] = useState<IHighlights[]>(highlights);
 

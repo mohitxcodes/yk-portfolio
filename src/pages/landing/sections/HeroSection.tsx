@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaGithub, FaLinkedin, FaTwitter, FaDownload, FaBook, FaGlobe, FaRocket, FaBrain, FaUsers } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
 import { useState } from 'react';
+import { heroHighlights, quickLinks, socialLinks, stats } from '../../../data/HomeData'
 
 function HeroSection() {
     const [ref, inView] = useInView({
@@ -10,60 +10,7 @@ function HeroSection() {
         threshold: 0.1,
     });
 
-
     const [showContact, setShowContact] = useState(false);
-
-    const highlights = [
-        {
-            title: "Research & Innovation",
-            description: "Pioneering breakthrough solutions in scientific research",
-            icon: <FaRocket />,
-            color: "from-purple-500 to-blue-500",
-            stats: "15+ Publications",
-            achievements: ["Research Excellence Award", "Innovation Grant"]
-        },
-        {
-            title: "Global Impact",
-            description: "Connecting cultures and sharing knowledge worldwide",
-            icon: <FaGlobe />,
-            color: "from-emerald-500 to-teal-500",
-            stats: "30+ Countries",
-            achievements: ["Cultural Exchange Program", "International Speaker"]
-        },
-        {
-            title: "Education & Mentorship",
-            description: "Empowering the next generation of leaders",
-            icon: <FaUsers />,
-            color: "from-amber-500 to-orange-500",
-            stats: "1000+ Students",
-            achievements: ["Teaching Excellence", "Mentorship Program"]
-        },
-        {
-            title: "AI Development",
-            description: "Building next-generation AI solutions for real-world problems",
-            icon: <FaBrain />,
-            color: "from-blue-500 to-indigo-500",
-            stats: "10+ AI Projects",
-            achievements: ["AI Innovation Award", "Tech Leadership"]
-        }
-    ];
-
-    const quickLinks = [
-        { text: "Read Blog", icon: <FaBook />, color: "from-emerald-500 to-teal-500" },
-        { text: "Download CV", icon: <FaDownload />, color: "from-red-500 to-pink-500" }
-    ];
-
-    const socialLinks = [
-        { icon: <FaGithub />, url: "#", label: "GitHub" },
-        { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
-        { icon: <FaTwitter />, url: "#", label: "Twitter" },
-    ];
-
-    const stats = [
-        { label: "Years Experience", value: "5+" },
-        { label: "Research Papers", value: "15+" },
-        { label: "Projects Completed", value: "30+" }
-    ];
 
     return (
         <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden">
@@ -347,7 +294,7 @@ function HeroSection() {
                             >
                                 <h3 className="text-lg font-semibold mb-4">Recent Milestones</h3>
                                 <div className="space-y-4">
-                                    {highlights.map((highlight, index) => (
+                                    {heroHighlights.map((highlight, index) => (
                                         <motion.div
                                             key={highlight.title}
                                             initial={{ opacity: 0, x: 20 }}

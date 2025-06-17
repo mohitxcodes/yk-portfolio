@@ -1,5 +1,58 @@
-import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, } from 'react-icons/fa';
+import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaGithub, FaLinkedin, FaTwitter, FaDownload, FaBook, } from 'react-icons/fa';
 import type { IHighlights } from '../interface/IHome'
+
+
+export const heroHighlights = [
+    {
+        title: "Research & Innovation",
+        description: "Pioneering breakthrough solutions in scientific research",
+        icon: <FaRocket />,
+        color: "from-purple-500 to-blue-500",
+        stats: "15+ Publications",
+        achievements: ["Research Excellence Award", "Innovation Grant"]
+    },
+    {
+        title: "Global Impact",
+        description: "Connecting cultures and sharing knowledge worldwide",
+        icon: <FaGlobe />,
+        color: "from-emerald-500 to-teal-500",
+        stats: "30+ Countries",
+        achievements: ["Cultural Exchange Program", "International Speaker"]
+    },
+    {
+        title: "Education & Mentorship",
+        description: "Empowering the next generation of leaders",
+        icon: <FaUsers />,
+        color: "from-amber-500 to-orange-500",
+        stats: "1000+ Students",
+        achievements: ["Teaching Excellence", "Mentorship Program"]
+    },
+    {
+        title: "AI Development",
+        description: "Building next-generation AI solutions for real-world problems",
+        icon: <FaBrain />,
+        color: "from-blue-500 to-indigo-500",
+        stats: "10+ AI Projects",
+        achievements: ["AI Innovation Award", "Tech Leadership"]
+    }
+];
+
+export const quickLinks = [
+    { text: "Read Blog", icon: <FaBook />, color: "from-emerald-500 to-teal-500" },
+    { text: "Download CV", icon: <FaDownload />, color: "from-red-500 to-pink-500" }
+];
+
+export const socialLinks = [
+    { icon: <FaGithub />, url: "#", label: "GitHub" },
+    { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
+    { icon: <FaTwitter />, url: "#", label: "Twitter" },
+];
+
+export const stats = [
+    { label: "Years Experience", value: "5+" },
+    { label: "Research Papers", value: "15+" },
+    { label: "Projects Completed", value: "30+" }
+];
 
 export const highlights: IHighlights[] = [
     {

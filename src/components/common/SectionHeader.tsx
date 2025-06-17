@@ -25,7 +25,7 @@ function SectionHeader({ title, description, className = "" }: SectionHeaderProp
                 className="space-y-6 flex flex-col justify-center items-center"
             >
                 <div className="relative inline-block">
-                    <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
                         {title}
                     </h2>
                     <motion.div
