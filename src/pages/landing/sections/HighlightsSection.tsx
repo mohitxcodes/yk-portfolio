@@ -1,92 +1,24 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, } from 'framer-motion';
 import { useState, useEffect, useMemo } from 'react';
 import useMeasure from 'react-use-measure';
 import { useTransition, a } from '@react-spring/web';
 import shuffle from 'lodash.shuffle';
 import SectionHeader from '../../../components/common/SectionHeader';
+import { highlights } from "../../../data/HomeData"
+import type { IHighlights } from '../../../interface/IHome'
 
-interface HighlightItem {
-    title: string;
-    description: string;
-    color: string;
-    height: number;
-    image: string;
-    x?: number;
-    y?: number;
-    width?: number;
-}
 
 function HighlightsSection() {
-    const { scrollYProgress } = useScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
     // Hook1: Tie media queries to the number of columns
     const columns = useMedia(['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'], [5, 4, 3], 2);
     // Hook2: Measure the width of the container element
     const [ref, { width }] = useMeasure();
 
-    const highlights: HighlightItem[] = [
-        {
-            title: "Research Excellence",
-            description: "Published 5 papers in top-tier conferences",
-            color: "from-purple-500 to-blue-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Technical Innovation",
-            description: "Developed novel ML algorithms",
-            color: "from-emerald-500 to-teal-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Leadership",
-            description: "Led teams of 10+ researchers",
-            color: "from-amber-500 to-orange-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Academic Impact",
-            description: "Teaching and mentoring 1000+ students",
-            color: "from-red-500 to-pink-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Creative Expression",
-            description: "Photography and visual storytelling",
-            color: "from-indigo-500 to-purple-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Industry Recognition",
-            description: "Multiple awards and accolades",
-            color: "from-yellow-500 to-orange-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "AI Research",
-            description: "Pioneering AI solutions for real-world problems",
-            color: "from-blue-500 to-indigo-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-            title: "Open Source",
-            description: "Contributing to the developer community",
-            color: "from-green-500 to-emerald-500",
-            height: 600,
-            image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
-        }
-    ];
+
 
     // Hook3: Hold items
-    const [items, set] = useState<HighlightItem[]>(highlights);
+    const [items, set] = useState<IHighlights[]>(highlights);
 
     // Hook4: shuffle data every 3 seconds (faster)
     useEffect(() => {
@@ -97,7 +29,7 @@ function HighlightsSection() {
     // Hook5: Form a grid of stacked items
     const [heights, gridItems] = useMemo(() => {
         let heights = new Array(columns).fill(0);
-        let gridItems = items.map((child, i) => {
+        let gridItems = items.map((child) => {
             const column = heights.indexOf(Math.min(...heights));
             const x = (width / columns) * column;
             const y = (heights[column] += child.height / 2) - child.height / 2;
@@ -108,7 +40,7 @@ function HighlightsSection() {
 
     // Hook6: Turn the static grid values into animated transitions
     const transitions = useTransition(gridItems, {
-        key: (item: HighlightItem) => item.title,
+        key: (item: IHighlights) => item.title,
         from: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 0 }),
         enter: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 1 }),
         update: ({ x, y, width, height }) => ({ x, y, width, height }),

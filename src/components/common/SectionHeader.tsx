@@ -10,7 +10,7 @@ interface SectionHeaderProps {
 function SectionHeader({ title, description, className = "" }: SectionHeaderProps) {
     const { scrollYProgress } = useScroll();
     const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
 
     return (
         <motion.div
@@ -22,7 +22,7 @@ function SectionHeader({ title, description, className = "" }: SectionHeaderProp
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: false }}
-                className="space-y-6"
+                className="space-y-6 flex flex-col justify-center items-center"
             >
                 <div className="relative inline-block">
                     <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">

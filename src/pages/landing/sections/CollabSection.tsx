@@ -1,37 +1,11 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaHandshake, FaCalendarAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaRocket, FaLightbulb, FaUsers, FaCode } from 'react-icons/fa';
+import { motion, } from 'framer-motion';
+import { FaCalendarAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, } from 'react-icons/fa';
 import { useState } from 'react';
 import SectionHeader from '../../../components/common/SectionHeader';
+import { collaborationAreas } from '../../../data/HomeData'
 
 function CollabSection() {
-    const { scrollYProgress } = useScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-
-    const [ref, inView] = useInView({
-        triggerOnce: false,
-        threshold: 0.1,
-    });
-
     const [showSchedule, setShowSchedule] = useState(false);
-
-    const collaborationAreas = [
-        {
-            title: "Research",
-            description: "AI & ML Research Projects",
-            icon: <FaRocket />,
-            color: "from-purple-500/20 to-blue-500/20",
-            tags: ["AI", "ML", "Data Science"]
-        },
-        {
-            title: "Mentoring",
-            description: "Tech Workshops & Talks",
-            icon: <FaLightbulb />,
-            color: "from-amber-500/20 to-orange-500/20",
-            tags: ["Workshops", "Talks", "Mentoring"]
-        }
-    ];
 
     return (
         <section className="min-h-screen bg-black text-white py-20 relative overflow-hidden">
