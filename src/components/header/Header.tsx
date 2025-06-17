@@ -20,8 +20,7 @@ function Header() {
     const navItems = [
         { label: 'Home', icon: <FaHome />, href: '/' },
         { label: 'About', icon: <FaUser />, href: '/about' },
-        { label: 'Experience', icon: <FaBriefcase />, href: '/experience' },
-        { label: 'Blog', icon: <FaBook />, href: '/blog' },
+        { label: 'Highlights', icon: <FaBriefcase />, href: '/highlights' },
         { label: 'Contact', icon: <FaEnvelope />, href: '/contact' },
     ];
 
@@ -63,12 +62,14 @@ function Header() {
                                     {item.icon}
                                 </motion.span>
                                 {item.label}
-                                <motion.span
-                                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white to-gray-400 ${location.pathname === item.href ? 'w-full' : 'w-0'
-                                        }`}
-                                    whileHover={{ width: '100%' }}
-                                    transition={{ duration: 0.2 }}
-                                />
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 overflow-hidden">
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-r from-white to-gray-400"
+                                        initial={{ scaleX: 0, x: '-50%' }}
+                                        whileHover={{ scaleX: 1, x: '0%' }}
+                                        transition={{ duration: 0.3, ease: "easeOut" }}
+                                    />
+                                </div>
                             </Link>
                         ))}
                     </nav>

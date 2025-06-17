@@ -179,7 +179,7 @@ function AboutMe() {
                             {/* About Section */}
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-semibold text-gray-300">Hi, I'm Yashwant Kumar</h2>
-                                <div className="space-y-4 text-gray-300">
+                                <div className="space-y-4 text-gray-300/80">
                                     <p className="leading-relaxed">
                                         A software engineer who aims to evolve, innovate, and inspire through technology.
                                     </p>

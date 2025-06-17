@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
-import AboutMe from './pages/about-me/about-me'
+import AboutMe from './pages/about-me/AboutMe.tsx'
 import LandingPage from './pages/landing/LandingPage.tsx'
+import ContactPage from './pages/contact/ContactPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path: '/about',
         element: <AboutMe />,
       },
+      {
+        path: '/contact',
+        element: <ContactPage />
+      }
     ],
   },
 ])
