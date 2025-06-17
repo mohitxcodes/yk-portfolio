@@ -1,21 +1,35 @@
 import { motion } from 'framer-motion';
-import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaBook, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaBook, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
     const [isDark, setIsDark] = useState(true);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navItems = [
-        { label: 'Home', icon: <FaHome />, href: '#' },
-        { label: 'About', icon: <FaUser />, href: '#about' },
-        { label: 'Experience', icon: <FaBriefcase />, href: '#experience' },
-        { label: 'Blog', icon: <FaBook />, href: '#blog' },
-        { label: 'Contact', icon: <FaEnvelope />, href: '#contact' },
+        { label: 'Home', icon: <FaHome />, href: '/' },
+        { label: 'About', icon: <FaUser />, href: '/about' },
+        { label: 'Experience', icon: <FaBriefcase />, href: '/experience' },
+        { label: 'Blog', icon: <FaBook />, href: '/blog' },
+        { label: 'Contact', icon: <FaEnvelope />, href: '/contact' },
     ];
 
     const socialLinks = [
-        { icon: <FaGithub />, href: '#', label: 'GitHub' },
-        { icon: <FaLinkedin />, href: '#', label: 'LinkedIn' },
+        { icon: <FaGithub />, href: 'https://github.com/yourusername', label: 'GitHub' },
+        { icon: <FaLinkedin />, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
+        { icon: <FaTwitter />, href: 'https://twitter.com/yourusername', label: 'Twitter' },
+        { icon: <FaInstagram />, href: 'https://instagram.com/yourusername', label: 'Instagram' },
     ];
 
     return (
@@ -23,31 +37,39 @@ function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-black/30 backdrop-blur-sm'
+                }`}
         >
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-end h-14">
                     {/* Navigation */}
                     <nav className="hidden md:flex items-center space-x-1">
                         {navItems.map((item, index) => (
-                            <motion.a
+                            <Link
                                 key={item.label}
-                                href={item.href}
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * index }}
-                                className="px-3 py-1.5 text-sm text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-1.5 group relative"
+                                to={item.href}
+                                className={`px-3 py-1.5 text-sm transition-colors duration-300 flex items-center gap-1.5 group relative ${location.pathname === item.href
+                                    ? 'text-white'
+                                    : 'text-gray-300 hover:text-white'
+                                    }`}
                             >
-                                <span className="text-gray-400 group-hover:text-white transition-colors duration-300 text-xs">
+                                <motion.span
+                                    className={`text-xs transition-colors duration-300 ${location.pathname === item.href
+                                        ? 'text-white'
+                                        : 'text-gray-400 group-hover:text-white'
+                                        }`}
+                                    whileHover={{ scale: 1.1 }}
+                                >
                                     {item.icon}
-                                </span>
+                                </motion.span>
                                 {item.label}
                                 <motion.span
-                                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-400"
+                                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white to-gray-400 ${location.pathname === item.href ? 'w-full' : 'w-0'
+                                        }`}
                                     whileHover={{ width: '100%' }}
                                     transition={{ duration: 0.2 }}
                                 />
-                            </motion.a>
+                            </Link>
                         ))}
                     </nav>
 
@@ -58,15 +80,16 @@ function Header() {
                     <div className="flex items-center space-x-3">
                         {/* Social Links */}
                         <div className="hidden md:flex items-center space-x-2">
-                            {socialLinks.map((social, index) => (
+                            {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.label}
                                     href={social.href}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.2 + index * 0.1 }}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
                                     aria-label={social.label}
+                                    whileHover={{ scale: 1.1, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
                                 >
                                     {social.icon}
                                 </motion.a>
@@ -85,11 +108,16 @@ function Header() {
                         </motion.button>
 
                         {/* Mobile Menu Button */}
-                        <button className="md:hidden p-1.5 text-gray-400 hover:text-white transition-colors duration-300">
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="md:hidden p-1.5 text-gray-400 hover:text-white transition-colors duration-300"
+                            aria-label="Toggle menu"
+                        >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
-                        </button>
+                        </motion.button>
                     </div>
                 </div>
             </div>
