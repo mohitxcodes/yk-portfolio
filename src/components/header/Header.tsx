@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
     const [isDark, setIsDark] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,10 +19,10 @@ function Header() {
     }, []);
 
     const navItems = [
-        { label: 'Home', icon: <FaHome />, href: '/' },
-        { label: 'About', icon: <FaUser />, href: '/about' },
-        { label: 'Highlights', icon: <FaBriefcase />, href: '/highlights' },
-        { label: 'Contact', icon: <FaEnvelope />, href: '/contact' },
+        { label: 'Home', icon: <FaHome />, path: '/' },
+        { label: 'About', icon: <FaUser />, path: '/about' },
+        { label: 'Highlights', icon: <FaBriefcase />, path: '/highlights' },
+        { label: 'Contact', icon: <FaEnvelope />, path: '/contact' },
     ];
 
     const socialLinks = [
@@ -36,41 +37,31 @@ function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-black/30 backdrop-blur-sm'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-black/30 backdrop-blur-sm'}`}
         >
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-end h-14">
                     {/* Navigation */}
                     <nav className="hidden md:flex items-center space-x-1">
                         {navItems.map((item) => (
-                            <Link
+                            <motion.button
                                 key={item.label}
-                                to={item.href}
-                                className={`px-3 py-1.5 text-sm transition-colors duration-300 flex items-center gap-1.5 group relative ${location.pathname === item.href
+                                onClick={() => navigate(item.path)}
+                                className={`px-3 py-1.5 text-sm cursor-pointer transition-colors duration-300 flex items-center gap-1.5 ${location.pathname === item.path
                                     ? 'text-white'
                                     : 'text-gray-300 hover:text-white'
                                     }`}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                             >
-                                <motion.span
-                                    className={`text-xs transition-colors duration-300 ${location.pathname === item.href
-                                        ? 'text-white'
-                                        : 'text-gray-400 group-hover:text-white'
-                                        }`}
-                                    whileHover={{ scale: 1.1 }}
-                                >
+                                <span className={`text-xs ${location.pathname === item.path
+                                    ? 'text-white'
+                                    : 'text-gray-400'
+                                    }`}>
                                     {item.icon}
-                                </motion.span>
+                                </span>
                                 {item.label}
-                                <div className="absolute bottom-0 left-0 right-0 h-0.5 overflow-hidden">
-                                    <motion.div
-                                        className="absolute inset-0 bg-gradient-to-r from-white to-gray-400"
-                                        initial={{ scaleX: 0, x: '-50%' }}
-                                        whileHover={{ scaleX: 1, x: '0%' }}
-                                        transition={{ duration: 0.3, ease: "easeOut" }}
-                                    />
-                                </div>
-                            </Link>
+                            </motion.button>
                         ))}
                     </nav>
 

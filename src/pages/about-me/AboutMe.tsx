@@ -73,7 +73,7 @@ function AboutMe() {
                             <div className="relative">
                                 <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-gray-800">
                                     <img
-                                        src="/avatar.jpg"
+                                        src="/images/yashwant.jpeg"
                                         alt="Yashwant Kumar"
                                         className="w-full h-full object-cover"
                                     />

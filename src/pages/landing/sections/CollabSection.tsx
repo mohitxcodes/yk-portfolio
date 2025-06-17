@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaHandshake, FaCalendarAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaRocket, FaLightbulb, FaUsers, FaCode } from 'react-icons/fa';
 import { useState } from 'react';
+import SectionHeader from '../../../components/common/SectionHeader';
 
 function CollabSection() {
     const { scrollYProgress } = useScroll();
@@ -41,35 +42,10 @@ function CollabSection() {
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Section Header */}
-                <motion.div
-                    style={{ scale, opacity }}
-                    className="text-center mb-16"
-                >
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: false }}
-                        className="space-y-6"
-                    >
-                        <div className="relative inline-block">
-                            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
-                                Thank You & Let's Connect
-                            </h2>
-                            <motion.div
-                                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-gray-500/50 to-transparent"
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                viewport={{ once: false }}
-                            />
-                        </div>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                            Your time and interest mean the world to me. I'm excited to explore potential collaborations and share our journeys together.
-                        </p>
-                    </motion.div>
-                </motion.div>
+                <SectionHeader
+                    title="Thank You & Let's Connect"
+                    description="Your time and interest mean the world to me. I'm excited to explore potential collaborations and share our journeys together."
+                />
 
                 {/* Two Column Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">

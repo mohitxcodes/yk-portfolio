@@ -1,8 +1,8 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaCode, FaGraduationCap, FaCamera, FaGithub, FaLinkedin, FaTwitter, FaArrowRight, FaEnvelope, FaPhone, FaMapMarkerAlt, FaDownload, FaBook, FaGlobe, FaLightbulb, FaChevronRight, FaRocket, FaBrain, FaChartLine, FaUsers, FaAward } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaDownload, FaBook, FaGlobe, FaRocket, FaBrain, FaUsers } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function HeroSection() {
     const [ref, inView] = useInView({
@@ -10,39 +10,8 @@ function HeroSection() {
         threshold: 0.1,
     });
 
-    const { scrollY } = useScroll();
-    const y = useTransform(scrollY, [0, 500], [0, 200]);
-    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [showContact, setShowContact] = useState(false);
-    const [activeRole, setActiveRole] = useState(0);
-
-    const roles = [
-        { text: "Researcher", color: "from-gray-400 to-gray-600" },
-        { text: "Coder", color: "from-gray-400 to-gray-600" },
-        { text: "Teacher", color: "from-gray-400 to-gray-600" },
-        { text: "Traveler", color: "from-gray-400 to-gray-600" }
-    ];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveRole((prev) => (prev + 1) % roles.length);
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY,
-            });
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
 
     const highlights = [
         {
@@ -88,12 +57,6 @@ function HeroSection() {
         { icon: <FaGithub />, url: "#", label: "GitHub" },
         { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
         { icon: <FaTwitter />, url: "#", label: "Twitter" },
-    ];
-
-    const achievements = [
-        { icon: <FaAward />, text: "Research Excellence Award 2023" },
-        { icon: <FaChartLine />, text: "Top 10 Innovators in Tech" },
-        { icon: <FaBrain />, text: "AI Research Grant Recipient" }
     ];
 
     const stats = [
@@ -327,7 +290,7 @@ function HeroSection() {
                                     transition={{ delay: 1.0 }}
                                     className="flex flex-wrap gap-4"
                                 >
-                                    {quickLinks.map((link, index) => (
+                                    {quickLinks.map((link) => (
                                         <motion.a
                                             key={link.text}
                                             href="#"

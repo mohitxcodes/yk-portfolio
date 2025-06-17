@@ -1,93 +1,16 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaBriefcase, FaGraduationCap, FaCode, FaRocket, FaBrain, FaChartLine, FaAward, FaLightbulb, FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt, FaArrowUp, FaStar, FaCheckCircle } from 'react-icons/fa';
-import { useSpring, animated, useTrail } from '@react-spring/web';
-
+import { FaRocket, FaExternalLinkAlt, } from 'react-icons/fa';
+import { useSpring, animated, } from '@react-spring/web';
+import SectionHeader from '../../../components/common/SectionHeader';
+import { experiences } from '../../../data/HomeData'
 function Experience() {
-    const { scrollYProgress } = useScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-
     // Timeline animation spring with enhanced config
-    const [timelineSpring, api] = useSpring(() => ({
+    const [timelineSpring] = useSpring(() => ({
         from: { scaleY: 0, opacity: 0 },
         to: { scaleY: 1, opacity: 1 },
         config: { tension: 280, friction: 20 }
     }));
-
-    // Enhanced dots animation with shadow effect
-    const dotsTrail = useTrail(3, {
-        from: { scale: 0, opacity: 0, boxShadow: '0 0 0 rgba(255,255,255,0)' },
-        to: { scale: 1, opacity: 1, boxShadow: '0 0 20px rgba(255,255,255,0.2)' },
-        config: { tension: 280, friction: 20 },
-        delay: 200
-    });
-
-    const experiences = [
-        {
-            title: "Senior Research Scientist",
-            company: "Tech Innovations Lab",
-            period: "2022 - Present",
-            description: "Leading research in AI and machine learning applications. Published 5 papers in top-tier conferences.",
-            icon: <FaBrain />,
-            tags: ["AI Research", "Machine Learning", "Team Leadership"],
-            achievements: ["Best Paper Award 2023", "Research Grant Recipient"],
-            color: "from-purple-500/20 to-blue-500/20",
-            companyLogo: "https://via.placeholder.com/150",
-            location: "San Francisco, CA",
-            link: "#",
-            highlights: [
-                "Led a team of 10 researchers in AI projects",
-                "Secured $2M in research funding",
-                "Published in top-tier conferences"
-            ],
-            growth: "Senior Leadership",
-            impact: "High",
-            skills: ["AI/ML", "Leadership", "Research"]
-        },
-        {
-            title: "Software Engineer",
-            company: "Global Tech Solutions",
-            period: "2020 - 2022",
-            description: "Developed scalable applications using modern technologies. Led a team of 5 developers.",
-            icon: <FaCode />,
-            tags: ["Full Stack", "Team Lead", "Cloud Architecture"],
-            achievements: ["Employee of the Year 2021", "Innovation Award"],
-            color: "from-emerald-500/20 to-teal-500/20",
-            companyLogo: "https://via.placeholder.com/150",
-            location: "New York, NY",
-            link: "#",
-            highlights: [
-                "Architected cloud-native solutions",
-                "Reduced system latency by 40%",
-                "Mentored junior developers"
-            ],
-            growth: "Technical Leadership",
-            impact: "Medium",
-            skills: ["Full Stack", "Cloud", "Architecture"]
-        },
-        {
-            title: "Research Associate",
-            company: "University Research Center",
-            period: "2018 - 2020",
-            description: "Conducted research in data science and published findings in international journals.",
-            icon: <FaChartLine />,
-            tags: ["Data Science", "Research", "Publications"],
-            achievements: ["Research Excellence Award", "3 Publications"],
-            color: "from-amber-500/20 to-orange-500/20",
-            companyLogo: "https://via.placeholder.com/150",
-            location: "Boston, MA",
-            link: "#",
-            highlights: [
-                "Developed novel ML algorithms",
-                "Collaborated with international teams",
-                "Presented at major conferences"
-            ],
-            growth: "Research Excellence",
-            impact: "Medium",
-            skills: ["Data Science", "ML", "Research"]
-        }
-    ];
 
     return (
         <section className="min-h-screen bg-black text-white py-20 relative overflow-hidden">
@@ -98,35 +21,10 @@ function Experience() {
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Enhanced Section Header */}
-                <motion.div
-                    style={{ scale, opacity }}
-                    className="text-center mb-16"
-                >
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: false }}
-                        className="space-y-6"
-                    >
-                        <div className="relative inline-block">
-                            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
-                                Career Journey
-                            </h2>
-                            <motion.div
-                                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-gray-500/50 to-transparent"
-                                initial={{ scaleX: 0 }}
-                                whileInView={{ scaleX: 1 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                viewport={{ once: false }}
-                            />
-                        </div>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                            Exploring the path of growth, innovation, and leadership through professional milestones
-                        </p>
-                    </motion.div>
-                </motion.div>
+                <SectionHeader
+                    title="Career Journey"
+                    description="Exploring the path of growth, innovation, and leadership through professional milestones"
+                />
 
                 {/* Experience Cards with Centered Timeline */}
                 <div className="max-w-7xl mx-auto relative">
