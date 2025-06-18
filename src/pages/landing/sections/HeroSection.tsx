@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import { heroHighlights, quickLinks, socialLinks, stats } from '../../../data/HomeData'
 
 function HeroSection() {
@@ -238,11 +239,9 @@ function HeroSection() {
                                     className="flex flex-wrap gap-4"
                                 >
                                     {quickLinks.map((link) => (
-                                        <motion.a
+                                        <Link
                                             key={link.text}
-                                            href="#"
-                                            whileHover={{ scale: 1.05, x: 5 }}
-                                            whileTap={{ scale: 0.95 }}
+                                            to={link.herf}
                                             className="group w-max px-6 relative overflow-hidden py-3 rounded-lg border border-gray-700 hover:border-gray-500 transition-all duration-300"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
@@ -250,7 +249,7 @@ function HeroSection() {
                                                 {link.icon}
                                                 <span>{link.text}</span>
                                             </div>
-                                        </motion.a>
+                                        </Link>
                                     ))}
                                 </motion.div>
 

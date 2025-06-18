@@ -1,4 +1,4 @@
-import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaGithub, FaLinkedin, FaTwitter, FaDownload, FaBook, } from 'react-icons/fa';
+import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaGithub, FaLinkedin, FaTwitter, FaBook, FaUser, } from 'react-icons/fa';
 import type { IHighlights } from '../interface/IHome'
 
 
@@ -38,14 +38,15 @@ export const heroHighlights = [
 ];
 
 export const quickLinks = [
-    { text: "Read Blog", icon: <FaBook />, color: "from-emerald-500 to-teal-500" },
-    { text: "Download CV", icon: <FaDownload />, color: "from-red-500 to-pink-500" }
+    { text: "About Me", icon: <FaUser />, color: "from-red-500 to-pink-500", herf: "/about" },
+    { text: "Read Blog", icon: <FaBook />, color: "from-emerald-500 to-teal-500", herf: "/blogs" },
 ];
 
 export const socialLinks = [
     { icon: <FaGithub />, url: "#", label: "GitHub" },
     { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
     { icon: <FaTwitter />, url: "#", label: "Twitter" },
+
 ];
 
 export const stats = [

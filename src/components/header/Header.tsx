@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaBook, FaGraduationCap } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -22,6 +22,8 @@ function Header() {
         { label: 'Home', icon: <FaHome />, path: '/' },
         { label: 'About', icon: <FaUser />, path: '/about' },
         { label: 'Highlights', icon: <FaBriefcase />, path: '/highlights' },
+        { label: 'Blogs', icon: <FaBook />, path: '/blogs' },
+        { label: 'Student Corner', icon: <FaGraduationCap />, path: '/student-corner' },
         { label: 'Contact', icon: <FaEnvelope />, path: '/contact' },
     ];
 
