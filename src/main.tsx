@@ -8,6 +8,7 @@ import LandingPage from './pages/landing/LandingPage.tsx'
 import ContactPage from './pages/contact/ContactPage.tsx'
 import HighLightPage from './pages/highligths/HighLightPage.tsx'
 import BlogPage from './pages/blogs/BlogPage.tsx'
+import StudentPage from './pages/student-corner/StudentPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <BlogPage />
+      },
+      {
+        path: 'student-corner',
+        element: <StudentPage />
       }
     ],
   },
