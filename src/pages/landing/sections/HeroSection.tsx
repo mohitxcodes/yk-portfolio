@@ -201,9 +201,8 @@ function HeroSection() {
                                         className="text-gray-400"
                                     >
                                         <p className="text-lg leading-relaxed">
-                                            Passionate about pushing boundaries in research, sharing knowledge through teaching,
-                                            and exploring the world through travel. I combine technical expertise with creative
-                                            thinking to solve complex problems.
+                                            Currently pursuing a Ph.D. in Artificial Intelligence and Machine Learning at NIT Jalandhar. I'm a former Assistant Professor in the Department of Computer Science at Chandigarh University, where I had the opportunity to teach and mentor future technologists.
+
                                         </p>
                                     </motion.div>
 

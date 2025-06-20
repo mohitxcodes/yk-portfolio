@@ -44,7 +44,7 @@ export const quickLinks = [
 
 export const socialLinks = [
     { icon: <FaGithub />, url: "#", label: "GitHub" },
-    { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
+    { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/yashwant-kumar-702ba261/", label: "LinkedIn" },
     { icon: <FaTwitter />, url: "#", label: "Twitter" },
 
 ];

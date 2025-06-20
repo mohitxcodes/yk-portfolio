@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaMoon, FaSun, FaHome, FaUser, FaEnvelope, FaBriefcase, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaBook, FaGraduationCap } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { socialLinks } from "../../data/HomeData"
 
 function Header() {
     const [isDark, setIsDark] = useState(true);
@@ -27,12 +28,6 @@ function Header() {
         { label: 'Contact', icon: <FaEnvelope />, path: '/contact' },
     ];
 
-    const socialLinks = [
-        { icon: <FaGithub />, href: 'https://github.com/yourusername', label: 'GitHub' },
-        { icon: <FaLinkedin />, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-        { icon: <FaTwitter />, href: 'https://twitter.com/yourusername', label: 'Twitter' },
-        { icon: <FaInstagram />, href: 'https://instagram.com/yourusername', label: 'Instagram' },
-    ];
 
     return (
         <motion.header
@@ -77,7 +72,7 @@ function Header() {
                             {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.label}
-                                    href={social.href}
+                                    href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
