@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { FaFilePdf, FaFilePowerpoint, FaDownload, FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
 
-// Dummy data - Replace with actual data from backend
 const studyMaterials = [
     {
         id: 1,

@@ -35,9 +35,9 @@ const router = createBrowserRouter([
         element: <BlogPage />
       },
       {
-        path: 'student-corner',
+        path: '/student-corner',
         element: <StudentPage />
-      }
+      },
     ],
   },
 ])
