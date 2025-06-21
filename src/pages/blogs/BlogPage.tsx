@@ -1,67 +1,33 @@
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaArrowRight, FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
-
-// Mock data - Replace with your actual blog data
-const blogs = [
-    {
-        id: 1,
-        title: "Understanding Cloud Architecture",
-        subTitle: "A deep dive into modern cloud architecture patterns and best practices for scalable applications.",
-        date: "March 15, 2024",
-        tags: ["Cloud", "Architecture", "AWS"],
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        id: 2,
-        title: "The Future of AI in Healthcare",
-        subTitle: "Exploring how artificial intelligence is transforming healthcare delivery and patient care.",
-        date: "March 10, 2024",
-        tags: ["AI", "Healthcare", "Technology"],
-        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        id: 3,
-        title: "Building Scalable Microservices",
-        subTitle: "Best practices and patterns for designing and implementing scalable microservices architecture.",
-        date: "March 5, 2024",
-        tags: ["Microservices", "Architecture", "Scalability"],
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        id: 4,
-        title: "Machine Learning Fundamentals",
-        subTitle: "A comprehensive guide to understanding the basics of machine learning and its applications.",
-        date: "February 28, 2024",
-        tags: ["ML", "AI", "Data Science"],
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        id: 5,
-        title: "DevOps Best Practices",
-        subTitle: "Essential DevOps practices for modern software development and deployment.",
-        date: "February 20, 2024",
-        tags: ["DevOps", "CI/CD", "Automation"],
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        id: 6,
-        title: "Web Development Trends 2024",
-        subTitle: "Exploring the latest trends and technologies shaping web development in 2024.",
-        date: "February 15, 2024",
-        tags: ["Web Dev", "Trends", "Technology"],
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
-    }
-];
+import useBlogs from "../../hooks/useFetchBlogs"
+import BlogSkeletonGrid from './BlogSkeleton';
+import BlogModal from './BlogModal';
 
 function BlogPage() {
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedBlog, setSelectedBlog] = useState<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { blogs, loading } = useBlogs();
+    console.log(blogs)
 
     // Filter blogs based on search query
     const filteredBlogs = blogs.filter(blog => {
         return blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            blog.subTitle.toLowerCase().includes(searchQuery.toLowerCase());
+            blog.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
     });
+
+    const handleReadMore = (blog: any) => {
+        setSelectedBlog(blog);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedBlog(null);
+    };
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -71,99 +37,117 @@ function BlogPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black" />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10 pt-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 sm:pt-24">
                 <div className="max-w-7xl mx-auto">
                     {/* Header Section */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text mb-6 md:mb-0">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12 gap-4 sm:gap-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
                             Blogs
                         </h1>
                         {/* Search Bar */}
-                        <div className="relative w-full md:w-96">
+                        <div className="relative w-full sm:w-80 md:w-96">
                             <input
                                 type="text"
                                 placeholder="Search articles..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full px-4 py-2 pl-10 rounded-lg bg-gray-900/30 border border-gray-800 focus:border-gray-600 focus:ring-1 focus:ring-gray-600 transition-all"
+                                className="w-full px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg bg-gray-900/30 border border-gray-800 focus:border-gray-600 focus:ring-1 focus:ring-gray-600 transition-all text-sm sm:text-base"
+                                disabled={loading}
                             />
-                            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                            <FaSearch className="absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base" />
                         </div>
                     </div>
 
+                    {/* Loading State */}
+                    {loading && <BlogSkeletonGrid />}
+
                     {/* Blog Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredBlogs.map((blog, index) => (
-                            <motion.article
-                                key={blog.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800 overflow-hidden hover:border-gray-600 transition-all"
-                            >
-                                {/* Blog Image */}
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                </div>
-
-                                {/* Blog Content */}
-                                <div className="p-6 space-y-4">
-                                    {/* Date */}
-                                    <div className="flex items-center gap-1 text-sm text-gray-400">
-                                        <FaCalendarAlt />
-                                        <span>{blog.date}</span>
+                    {!loading && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                            {filteredBlogs.map((blog, index) => (
+                                <motion.article
+                                    key={blog.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="group bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800 overflow-hidden hover:border-gray-600 transition-all"
+                                >
+                                    {/* Blog Image */}
+                                    <div className="relative h-40 sm:h-48 overflow-hidden">
+                                        <img
+                                            src={blog.imageUrl}
+                                            alt={blog.title}
+                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                     </div>
 
-                                    {/* Title and Subtitle */}
-                                    <div className="space-y-2">
-                                        <h3 className="text-xl font-semibold group-hover:text-white transition-colors">
-                                            {blog.title}
-                                        </h3>
-                                        <p className="text-gray-400 text-sm line-clamp-2">
-                                            {blog.subTitle}
-                                        </p>
-                                    </div>
+                                    {/* Blog Content */}
+                                    <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+                                        {/* Date */}
+                                        <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-400">
+                                            <FaCalendarAlt />
+                                            <span>{blog.createdAt}</span>
+                                        </div>
 
-                                    {/* Tags */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {blog.tags.map(tag => (
-                                            <span
-                                                key={tag}
-                                                className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                                        {/* Title and Subtitle */}
+                                        <div className="space-y-2">
+                                            <h3 className="text-lg sm:text-xl font-semibold group-hover:text-white truncate transition-colors line-clamp-2">
+                                                {blog.title}
+                                            </h3>
+                                            <p className="text-gray-400 text-xs sm:text-sm line-clamp-1 leading-relaxed">
+                                                {blog.subtitle}
+                                            </p>
+                                        </div>
 
-                                    {/* Read More Link */}
-                                    <motion.a
-                                        href="#"
-                                        className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-                                        whileHover={{ x: 5 }}
-                                    >
-                                        Read More
-                                        <FaArrowRight className="text-xs" />
-                                    </motion.a>
-                                </div>
-                            </motion.article>
-                        ))}
-                    </div>
+                                        {/* Tags */}
+                                        <div className="flex flex-wrap gap-1 sm:gap-2">
+                                            {blog.hashtags.slice(0, 3).map(tag => (
+                                                <span
+                                                    key={tag}
+                                                    className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                            {blog.hashtags.length > 3 && (
+                                                <span className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-400 border border-gray-700">
+                                                    +{blog.hashtags.length - 3}
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        {/* Read More Link */}
+                                        <motion.button
+                                            onClick={() => handleReadMore(blog)}
+                                            className="inline-flex items-center gap-2 text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
+                                            whileHover={{ x: 5 }}
+                                        >
+                                            Read More
+                                            <FaArrowRight className="text-xs" />
+                                        </motion.button>
+                                    </div>
+                                </motion.article>
+                            ))}
+                        </div>
+                    )}
 
                     {/* No Results Message */}
-                    {filteredBlogs.length === 0 && (
-                        <div className="text-center py-12">
-                            <p className="text-gray-400">No articles found matching your criteria.</p>
+                    {!loading && filteredBlogs.length === 0 && (
+                        <div className="text-center py-8 sm:py-12">
+                            <p className="text-gray-400 text-sm sm:text-base">No articles found matching your criteria.</p>
                         </div>
                     )}
                 </div>
             </div>
+
+            {/* Blog Modal */}
+            <BlogModal
+                blog={selectedBlog}
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
         </div>
     );
 }
