@@ -257,12 +257,13 @@ function HeroSection() {
                                     initial={{ opacity: 0 }}
                                     animate={inView ? { opacity: 1 } : { opacity: 0 }}
                                     transition={{ delay: 1.1 }}
-                                    className="flex gap-6"
+                                    className="flex gap-3"
                                 >
                                     {socialLinks.map((social) => (
                                         <motion.a
                                             key={social.label}
                                             href={social.url}
+                                            target="_blank"
                                             whileHover={{ scale: 1.2, y: -5 }}
                                             whileTap={{ scale: 0.9 }}
                                             className="text-xl text-gray-400 hover:text-white transition-colors duration-300"

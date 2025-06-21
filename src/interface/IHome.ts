@@ -1,6 +1,6 @@
 export interface IHighlights {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     color: string;
     height: number;
     image: string;

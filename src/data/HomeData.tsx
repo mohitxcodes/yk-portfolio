@@ -1,4 +1,4 @@
-import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaGithub, FaLinkedin, FaTwitter, FaBook, FaUser, } from 'react-icons/fa';
+import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaLinkedin, FaTwitter, FaBook, FaUser, FaInstagram, } from 'react-icons/fa';
 import type { IHighlights } from '../interface/IHome'
 
 
@@ -43,9 +43,9 @@ export const quickLinks = [
 ];
 
 export const socialLinks = [
-    { icon: <FaGithub />, url: "#", label: "GitHub" },
     { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/yashwant-kumar-702ba261/", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "#", label: "Twitter" },
+    { icon: <FaTwitter />, url: "https://www.x.com/yashwant_kumarr", label: "Twitter" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/yashwant_kumarr/", label: "Instagram" },
 
 ];
 
@@ -57,60 +57,60 @@ export const stats = [
 
 export const highlights: IHighlights[] = [
     {
-        title: "Research Excellence",
-        description: "Published 5 papers in top-tier conferences",
+        title: "ReactJs Workshop",
+        description: "Wrokshop about the morden framework Reactjs.",
         color: "from-purple-500 to-blue-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights1.webp"
     },
     {
-        title: "Technical Innovation",
-        description: "Developed novel ML algorithms",
+        title: "Morden Web Dev",
+        description: "This workshop is dedicated to CSS.",
         color: "from-emerald-500 to-teal-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights9.webp"
     },
     {
-        title: "Leadership",
-        description: "Led teams of 10+ researchers",
+        title: "Happiness",
+        description: "The golden era of life.",
         color: "from-amber-500 to-orange-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights3.webp"
     },
     {
         title: "Academic Impact",
-        description: "Teaching and mentoring 1000+ students",
+        description: "Teaching and mentoring students about web dev.",
         color: "from-red-500 to-pink-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+        image: "highlights/highlights4.webp"
     },
     {
         title: "Creative Expression",
         description: "Photography and visual storytelling",
         color: "from-indigo-500 to-purple-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+        image: "highlights/highlights5.webp"
     },
     {
-        title: "Industry Recognition",
-        description: "Multiple awards and accolades",
+        title: "The Indian Culture",
+        description: "Indian culture is a vibrant blend of traditions, languages, festivals, art, and spirituality.",
         color: "from-yellow-500 to-orange-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights6.webp"
     },
     {
-        title: "AI Research",
-        description: "Pioneering AI solutions for real-world problems",
+        title: "Data Science",
+        description: "Session about data science using python.",
         color: "from-blue-500 to-indigo-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights7.webp"
     },
     {
-        title: "Open Source",
-        description: "Contributing to the developer community",
+        title: "Our Country",
+        description: "The beauty of India.",
         color: "from-green-500 to-emerald-500",
         height: 600,
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+        image: "/highlights/highlights8.webp"
     }
 ];
 
