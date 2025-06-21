@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { socialLinks } from '../../data/HomeData'
 
 function Footer() {
     const currentYear = new Date().getFullYear();
-    const socialLinks = [
-        { icon: <FaGithub />, href: '#', label: 'GitHub' },
-        { icon: <FaLinkedin />, href: '#', label: 'LinkedIn' },
-        { icon: <FaTwitter />, href: '#', label: 'Twitter' },
-    ];
 
     return (
         <motion.footer
@@ -29,7 +24,8 @@ function Footer() {
                         {socialLinks.map((social, index) => (
                             <motion.a
                                 key={social.label}
-                                href={social.href}
+                                href={social.url}
+                                target="_blank"
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 + index * 0.1 }}
