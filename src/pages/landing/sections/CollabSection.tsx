@@ -1,82 +1,63 @@
 import { motion, } from 'framer-motion';
-import { FaCalendarAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaEnvelope, FaInstagram, FaLinkedin, FaTwitter, FaRocket, FaLightbulb, FaUsers, FaGlobe } from 'react-icons/fa';
 import SectionHeader from '../../../components/common/SectionHeader';
-import { collaborationAreas } from '../../../data/HomeData'
 
 function CollabSection() {
-    const [showSchedule, setShowSchedule] = useState(false);
-
     return (
-        <section className="min-h-screen bg-black text-white py-20 relative overflow-hidden">
+        <section className="min-h-screen bg-black text-white py-12 sm:py-16 relative overflow-hidden">
             {/* Background effects */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:24px_24px]" />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black" />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <SectionHeader
-                    title="Thank You & Let's Connect"
-                    description="Your time and interest mean the world to me. I'm excited to explore potential collaborations and share our journeys together."
+                    title="Let's Connect"
+                    description="Ready to collaborate? I'm always excited to connect with fellow innovators and creators."
                 />
 
                 {/* Two Column Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-                    {/* Left Column - Personal Message */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+                    {/* Left Column - Personal Message & Interests */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-8"
+                        className="space-y-6 sm:space-y-8"
                     >
-                        <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl border border-gray-800 p-8">
-                            <h3 className="text-2xl font-semibold mb-6">A Personal Note</h3>
-                            <div className="space-y-4 text-gray-300">
-                                <p className="leading-relaxed">
+                        {/* Personal Message */}
+                        <div className="space-y-4 sm:space-y-6">
+                            <h3 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
+                                A Personal Note
+                            </h3>
+                            <div className="space-y-3 sm:space-y-4 text-gray-300">
+                                <p className="text-sm sm:text-base leading-relaxed">
                                     Thank you for taking the time to explore my portfolio. Your interest in my work is truly appreciated, and I'm grateful for the opportunity to share my journey with you.
                                 </p>
-                                <p className="leading-relaxed">
+                                <p className="text-sm sm:text-base leading-relaxed">
                                     Whether you're here to collaborate, learn, or simply connect, I'm excited to engage with fellow innovators and creators who share a passion for technology and innovation.
                                 </p>
-                                <p className="leading-relaxed">
+                                <p className="text-sm sm:text-base leading-relaxed">
                                     Let's create something extraordinary together. I'm always open to new ideas, partnerships, and meaningful conversations.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Collaboration Areas - More Minimal */}
-                        <div className="grid grid-cols-1 gap-4">
-                            {collaborationAreas.map((area, index) => (
-                                <motion.div
-                                    key={area.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: false }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800 p-4"
-                                >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${area.color} backdrop-blur-sm flex items-center justify-center text-lg text-white border border-gray-700 flex-shrink-0`}>
-                                            {area.icon}
-                                        </div>
-                                        <div className="flex-1">
-                                            <div className="flex items-center justify-between">
-                                                <h3 className="text-lg font-semibold">{area.title}</h3>
-                                                <div className="flex gap-2">
-                                                    {area.tags.map((tag) => (
-                                                        <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                            <p className="text-gray-400 text-sm mt-1">{area.description}</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+                        {/* Collaboration Interests */}
+                        <div className="space-y-3 sm:space-y-4">
+                            <h4 className="text-base sm:text-lg font-semibold text-gray-300">Areas of Interest</h4>
+                            <div className="space-y-2 sm:space-y-3">
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <FaRocket className="text-gray-300 text-base sm:text-lg flex-shrink-0" />
+                                    <span className="text-sm sm:text-base text-gray-300">Research & Innovation Projects</span>
+                                </div>
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <FaLightbulb className="text-gray-300 text-base sm:text-lg flex-shrink-0" />
+                                    <span className="text-sm sm:text-base text-gray-300">Tech Workshops & Mentoring</span>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -86,139 +67,70 @@ function CollabSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-8"
+                        className="space-y-6 sm:space-y-8"
                     >
-                        {/* Schedule Meeting Card */}
-                        <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl border border-gray-800 p-8">
-                            <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-                            <p className="text-gray-400 mb-8">
-                                I'm always excited to meet new people and explore potential collaborations. Whether you have a project in mind or just want to chat, I'd love to hear from you.
+                        {/* Connect Message */}
+                        <div className="space-y-4 sm:space-y-6">
+                            <h3 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text">
+                                Get in Touch
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                                I'm always excited to meet new people and explore potential collaborations. Whether you have a project in mind, want to discuss research opportunities, or just want to chat about technology, I'd love to hear from you.
                             </p>
+                        </div>
 
-                            <div className="space-y-6">
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => setShowSchedule(true)}
-                                    className="w-full flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-white text-black hover:bg-gray-100 transition-all duration-300"
-                                >
-                                    <FaCalendarAlt />
-                                    <span>Schedule a Meeting</span>
-                                </motion.button>
-
+                        {/* Contact Actions */}
+                        <div className="space-y-3 sm:space-y-4">
+                            <h4 className="text-base sm:text-lg font-semibold text-gray-300">Ways to Connect</h4>
+                            <div className="space-y-3">
                                 <motion.a
-                                    href="mailto:contact@example.com"
+                                    href="mailto:yashwantkumar9566@gmail.com"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full flex items-center justify-center gap-3 px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-500 transition-all duration-300"
+                                    className="flex items-center gap-3 p-3 sm:p-4 border border-gray-700 hover:border-gray-500 rounded-lg transition-all duration-300 group"
                                 >
-                                    <FaEnvelope />
-                                    <span>Send Me an Email</span>
+                                    <FaEnvelope className="text-gray-400 group-hover:text-white transition-colors text-base sm:text-lg flex-shrink-0" />
+                                    <div className="min-w-0 flex-1">
+                                        <div className="text-sm sm:text-base text-white font-medium">Send Email</div>
+                                        <div className="text-xs sm:text-sm text-gray-400 truncate">yashwantkumar9566@gmail.com</div>
+                                    </div>
                                 </motion.a>
-                            </div>
-
-                            {/* Social Links */}
-                            <div className="mt-8 pt-8 border-t border-gray-800">
-                                <h4 className="text-lg font-semibold mb-4">Connect on Social Media</h4>
-                                <div className="flex justify-center gap-6">
-                                    {[
-                                        { icon: <FaGithub />, label: "GitHub" },
-                                        { icon: <FaLinkedin />, label: "LinkedIn" },
-                                        { icon: <FaTwitter />, label: "Twitter" }
-                                    ].map((social) => (
-                                        <motion.a
-                                            key={social.label}
-                                            href="#"
-                                            whileHover={{ scale: 1.2, y: -5 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            className="text-2xl text-gray-400 hover:text-white transition-colors duration-300"
-                                            aria-label={social.label}
-                                        >
-                                            {social.icon}
-                                        </motion.a>
-                                    ))}
-                                </div>
                             </div>
                         </div>
 
-                        {/* Quick Stats - More Minimal */}
-                        <div className="bg-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-800 p-4">
-                            <div className="grid grid-cols-4 gap-2">
-                                <div className="text-center p-2">
-                                    <div className="text-xl font-bold text-white">5+</div>
-                                    <div className="text-xs text-gray-400">Years</div>
-                                </div>
-                                <div className="text-center p-2">
-                                    <div className="text-xl font-bold text-white">50+</div>
-                                    <div className="text-xs text-gray-400">Projects</div>
-                                </div>
-                                <div className="text-center p-2">
-                                    <div className="text-xl font-bold text-white">100+</div>
-                                    <div className="text-xs text-gray-400">Clients</div>
-                                </div>
-                                <div className="text-center p-2">
-                                    <div className="text-xl font-bold text-white">15+</div>
-                                    <div className="text-xs text-gray-400">Papers</div>
-                                </div>
+                        {/* Social Links */}
+                        <div className="space-y-3 sm:space-y-4">
+                            <h4 className="text-base sm:text-lg font-semibold text-gray-300">Follow & Connect</h4>
+                            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                                {[
+                                    { icon: <FaInstagram />, label: "Instagram", url: "https://instagram.com/yourusername", desc: "Daily Life & Updates" },
+                                    { icon: <FaLinkedin />, label: "LinkedIn", url: "https://linkedin.com/in/yourusername", desc: "Professional Network" },
+                                    { icon: <FaTwitter />, label: "Twitter", url: "https://twitter.com/yourusername", desc: "Thoughts & Updates" }
+                                ].map((social) => (
+                                    <motion.a
+                                        key={social.label}
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.05, y: -5 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="flex flex-col items-center gap-2 p-3 sm:p-4 border border-gray-700 hover:border-gray-500 rounded-lg transition-all duration-300 group"
+                                        aria-label={social.label}
+                                    >
+                                        <span className="text-lg sm:text-2xl text-gray-400 group-hover:text-white transition-colors">
+                                            {social.icon}
+                                        </span>
+                                        <div className="text-center min-w-0">
+                                            <div className="text-xs sm:text-sm font-medium text-white truncate">{social.label}</div>
+                                            <div className="text-xs text-gray-400 truncate hidden sm:block">{social.desc}</div>
+                                        </div>
+                                    </motion.a>
+                                ))}
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </div>
-
-            {/* Schedule Meeting Modal */}
-            {showSchedule && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-                    onClick={() => setShowSchedule(false)}
-                >
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.9, opacity: 0 }}
-                        className="bg-gray-900 rounded-lg p-8 max-w-md w-full border border-gray-800"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <h2 className="text-2xl font-bold mb-6">Schedule a Meeting</h2>
-                        <form className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-white focus:ring-2 focus:ring-white/20 transition-all"
-                                    placeholder="Your name"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                                <input
-                                    type="email"
-                                    className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-white focus:ring-2 focus:ring-white/20 transition-all"
-                                    placeholder="your@email.com"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">Meeting Purpose</label>
-                                <textarea
-                                    className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-white focus:ring-2 focus:ring-white/20 transition-all"
-                                    rows={3}
-                                    placeholder="Brief description of what you'd like to discuss"
-                                />
-                            </div>
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full px-6 py-3 rounded-lg bg-white text-black hover:bg-gray-100 transition-all duration-300"
-                            >
-                                Schedule Meeting
-                            </motion.button>
-                        </form>
-                    </motion.div>
-                </motion.div>
-            )}
         </section>
     );
 }

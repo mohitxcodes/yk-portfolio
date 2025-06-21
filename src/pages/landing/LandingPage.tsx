@@ -8,7 +8,9 @@ function LandingPage() {
     return (
         <>
             <HeroSection />
-            <HighlightsSection />
+            <div className="hidden md:block">
+                <HighlightsSection />
+            </div>
             <Experience />
             <CollabSection />
         </>
