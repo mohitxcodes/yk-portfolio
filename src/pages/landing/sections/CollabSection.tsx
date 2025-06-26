@@ -1,5 +1,5 @@
 import { motion, } from 'framer-motion';
-import { FaEnvelope, FaInstagram, FaLinkedin, FaTwitter, FaRocket, FaLightbulb, FaUsers, FaGlobe } from 'react-icons/fa';
+import { FaEnvelope, FaInstagram, FaLinkedin, FaTwitter, FaRocket, FaLightbulb, } from 'react-icons/fa';
 import SectionHeader from '../../../components/common/SectionHeader';
 
 function CollabSection() {

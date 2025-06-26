@@ -1,4 +1,4 @@
-import { FaCode, FaBrain, FaChartLine, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaLinkedin, FaTwitter, FaBook, FaUser, FaInstagram, } from 'react-icons/fa';
+import { FaBrain, FaRocket, FaLightbulb, FaGlobe, FaUsers, FaLinkedin, FaTwitter, FaBook, FaUser, FaInstagram, } from 'react-icons/fa';
 import type { IHighlights } from '../interface/IHome'
 
 
