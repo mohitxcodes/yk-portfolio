@@ -105,7 +105,7 @@ function ContactPage() {
                             <div className="bg-black/10 rounded-xl border border-gray-800 p-4 sm:p-6">
                                 <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Contact Information</h3>
                                 <div className="space-y-2 sm:space-y-3">
-                                    {contactInfo.map((info, index) => (
+                                    {contactInfo.map((info) => (
                                         <a
                                             key={info.label}
                                             href={info.link}

@@ -103,9 +103,9 @@ function CollabSection() {
                             <h4 className="text-base sm:text-lg font-semibold text-gray-300">Follow & Connect</h4>
                             <div className="grid grid-cols-3 gap-3 sm:gap-4">
                                 {[
-                                    { icon: <FaInstagram />, label: "Instagram", url: "https://instagram.com/yourusername", desc: "Daily Life & Updates" },
-                                    { icon: <FaLinkedin />, label: "LinkedIn", url: "https://linkedin.com/in/yourusername", desc: "Professional Network" },
-                                    { icon: <FaTwitter />, label: "Twitter", url: "https://twitter.com/yourusername", desc: "Thoughts & Updates" }
+                                    { icon: <FaInstagram />, label: "Instagram", url: "https://www.instagram.com/yashwant_kumarr/", desc: "Daily Life & Updates" },
+                                    { icon: <FaLinkedin />, label: "LinkedIn", url: "https://www.linkedin.com/in/yashwant-kumar-702ba261/", desc: "Professional Network" },
+                                    { icon: <FaTwitter />, label: "Twitter", url: "https://www.x.com/yashwant_kumarr", desc: "Thoughts & Updates" }
                                 ].map((social) => (
                                     <motion.a
                                         key={social.label}
